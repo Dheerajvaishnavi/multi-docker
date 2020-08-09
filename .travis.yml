@@ -14,7 +14,7 @@ after_success:
   - docker build -t dheeraj4v/multi-server ./server
   - docker build -t dheeraj4v/multi-worker ./worker
   # ......
-  - echo "$DOCKER_PASSWORD" | docker login -u "#DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #...
   - docker push dheeraj4v/multi-client 
   - docker push dheeraj4v/multi-nginx
