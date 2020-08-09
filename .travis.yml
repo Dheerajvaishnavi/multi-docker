@@ -1,0 +1,22 @@
+sudo:required
+services:
+  - docker
+
+before_install:
+  - docker build -t Dheerajvaishnavi/react-test -f ./client/dockerfile.dev ./client
+
+script:
+  - docker run Dheerajvaishnavi/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t Dheeraj4v/multi-client ./client 
+  - docker build -t Dheeraj4v/multi-nginx ./nginx
+  - docker build -t Dheeraj4v/multi-server./server
+  - docker build -t Dheeraj4v/multi-worker ./worker
+  # ......
+  - echo "$DOCKER_PASSWORD" | docker login -u "#DOCKER_ID" --password-stdin
+  #...
+  - docker push Dheeraj4v/multi-client 
+  - docker push Dheeraj4v/multi-nginx
+  - docker push Dheeraj4v/multi-server
+  - docker push Dheeraj4v/multi-worker
