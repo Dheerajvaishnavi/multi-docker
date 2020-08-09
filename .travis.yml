@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t Dheeraj4v/multi-docker -f ./client/dockerfile.dev ./client
+  - docker build -t dheeraj4v/multi-docker -f ./client/dockerfile.dev ./client
 
 script:
   - docker run Dheeraj4v/multi-docker npm test -- --coverage
