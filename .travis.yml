@@ -3,10 +3,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t Dheerajvaishnavi/react-test -f ./client/dockerfile.dev ./client
+  - docker build -t Dheeraj4v/react-test -f ./client/dockerfile.dev ./client
 
 script:
-  - docker run Dheerajvaishnavi/react-test npm test -- --coverage
+  - docker run Dheeraj4v/react-test npm test -- --coverage
 
 after_success:
   - docker build -t Dheeraj4v/multi-client ./client 
